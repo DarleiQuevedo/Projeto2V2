@@ -1,9 +1,6 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      dotnet: 6.0
   pre_build:
     commands:
       - echo Entrando na fase de pré-construção...
