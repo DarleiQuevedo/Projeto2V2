@@ -12,14 +12,13 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Construindo a imagem Docker...
-      - docker build -t projeto-2-aws .
+      - docker build -t projeto-2-aws:latest .
       - docker tag projeto-2-aws:latest 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
   post_build:
     commands:
       - echo Fazendo push da imagem Docker para o ECR...
-      - dotnet test
       - docker push 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
-      - echo Escrevendo imagem de Arquivo de Definicao
-      - cat imagedefinitions.json
+      - echo Escrevendo imagem de Arquivo de Definicao  
 artifacts:
-    files: imagedefinitions.json
+    files: []
+    
