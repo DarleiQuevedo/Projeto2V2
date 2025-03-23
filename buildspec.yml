@@ -1,6 +1,9 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      dotnet: 6.0
   pre_build:
     commands:
       - echo Entrando na fase de pré-construção...
@@ -8,17 +11,22 @@ phases:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 288761730587.dkr.ecr.us-east-1.amazonaws.com
       - IMAGE_TAG="$(git rev-parse --short HEAD)"
       - git clone https://github.com/DarleiQuevedo/Projeto-AWS.git
+      - COPY *.csproj ./
+      - dotnet restore
   build:
     commands:
+      - COPY . ./
       - echo Build started on `date`
-      - echo Construindo a imagem Docker...
-      - docker build -t projeto-2-aws:latest .
-      - docker tag projeto-2-aws:latest 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
+      - dotnet build -c Realese #echo Construindo a imagem Docker...
+      - echo docker build -t projeto-2-aws:latest .
+      - echo docker tag projeto-2-aws:latest 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
   post_build:
     commands:
       - echo Fazendo push da imagem Docker para o ECR...
-      - docker push 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
+      - dotnet publish -c Release -o out #docker push 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
       - echo Escrevendo imagem de Arquivo de Definicao  
 artifacts:
-    files: []
-    
+    files:
+    - '**/*'
+    base-directory: ./out
+
