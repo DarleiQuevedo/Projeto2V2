@@ -3,24 +3,21 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Instalando dependências e ferramentas..."
       - aws --version
       - echo "Instalando Docker..."
       - yum install docker -y
-      - echo "Iniciando o Docker..."
   pre_build:
     commands:
       - echo Entrando na fase de pré-construção...
       - aws --version
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 288761730587.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws
-      - IMAGE_TAG="$(git rev-parse --short HEAD)"
       - # git clone https://github.com/DarleiQuevedo/Projeto2v2.git
-      - ~/.dotnet/dotnet restore #ajuste..
+      - ~/.dotnet/dotnet restore 
   build:
     commands:
       - echo "Compilando e publicando o aplicativo .NET..."
-      - ~/.dotnet/dotnet publish -c Release -o out # ajuste
+      - ~/.dotnet/dotnet publish -c Release -o out 
       - echo Build started on `date`
       - echo Construindo a imagem Docker...
       - docker build -t $REPOSITORY_URI:latest .
