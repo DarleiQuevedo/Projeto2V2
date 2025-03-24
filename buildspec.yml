@@ -15,7 +15,7 @@ phases:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 288761730587.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws
       - IMAGE_TAG="$(git rev-parse --short HEAD)"
-      - git clone https://github.com/DarleiQuevedo/Projeto2v2.git
+      - # git clone https://github.com/DarleiQuevedo/Projeto2v2.git
       - ~/.dotnet/dotnet restore #ajuste..
   build:
     commands:
