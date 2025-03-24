@@ -1,0 +1,38 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Instalando dependências e ferramentas..."
+      - aws --version
+      - echo "Instalando Docker..."
+      - yum install docker -y
+      - echo "Iniciando o Docker..."
+     
+  pre_build:
+    commands:
+      - echo "Login no ECR"
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 586794446862.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI=586794446862.dkr.ecr.us-east-1.amazonaws.com/meusite
+      - echo "Restaurando dependências do projeto .NET..."
+      - ~/.dotnet/dotnet restore #ajuste..
+
+  build:
+    commands:
+      - echo "Compilando e publicando o aplicativo .NET..."
+      - ~/.dotnet/dotnet publish -c Release -o out # ajuste
+      - echo "Construindo a imagem Docker..."
+      - docker build -t meusite:latest .
+      - docker tag meusite:latest 586794446862.dkr.ecr.us-east-1.amazonaws.com/meusite:latest
+
+  post_build:
+    commands:
+      - echo "Gerando o arquivo imagedefinitions.json..."
+      - printf '[{"name":"meusite", "imageUri":"586794446862.dkr.ecr.us-east-1.amazonaws.com/meusite:latest" } ]' > imagedefinitions.json
+      - cat imagedefinitions.json
+      - echo "Subindo a imagem para o ECR..."
+      - docker push 586794446862.dkr.ecr.us-east-1.amazonaws.com/meusite:latest
+
+artifacts:
+  files:
+    - imagedefinitions.json
