@@ -6,6 +6,7 @@ phases:
       - echo Entrando na fase de pré-construção...
       - aws --version
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 288761730587.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI=288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws
       - IMAGE_TAG="$(git rev-parse --short HEAD)"
       - git clone https://github.com/DarleiQuevedo/Projeto2v2.git
       - ~/.dotnet/dotnet restore #ajuste..
@@ -15,15 +16,15 @@ phases:
       - ~/.dotnet/dotnet publish -c Release -o out # ajuste
       - echo Build started on `date`
       - echo Construindo a imagem Docker...
-      - docker build -t projeto-2-aws:latest .
-      - docker tag projeto-2-aws:latest 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:latest
   post_build:
     commands:
       - echo "Escrevendo imagem de Arquivo de Definicao imagedefinitions.json..."
-      - printf '[{"name":"projeto-2-aws", "imageUri":"288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest" } ]' > imagedefinitions.json
+      - printf '[{"name":"projeto-2-aws","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
       - cat imagedefinitions.json
       - echo Fazendo push da imagem Docker para o ECR...
-      - docker push 288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws:latest
+      - docker push $REPOSITORY_URI:latest
 artifacts:
     files:
       - imagedefinitions.json
