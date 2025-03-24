@@ -18,7 +18,7 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 # Expõe a porta e inicia o aplicativo
-EXPOSE 80
+EXPOSE 8080
 
 # Configurar o comando de inicialização
 ENTRYPOINT ["dotnet", "MeuSite.dll"]

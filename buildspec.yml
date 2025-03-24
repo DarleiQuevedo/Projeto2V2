@@ -6,7 +6,7 @@ phases:
       - echo "Instalando dependências e ferramentas..."
       - aws --version
       - echo "Instalando Docker..."
-      - yum install docker -y
+      - # yum install docker -y
       - echo "Iniciando o Docker..."
   pre_build:
     commands:
