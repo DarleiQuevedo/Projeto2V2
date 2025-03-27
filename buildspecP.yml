@@ -14,7 +14,7 @@ phases:
       - echo "Login no ECR"
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 586794446862.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=586794446862.dkr.ecr.us-east-1.amazonaws.com/meusite
-      - echo "Restaurando dependências do projeto .NET..."
+      - echo "Restaurando dependências do projeto .NET..." #
       - ~/.dotnet/dotnet restore #ajuste..
 
   build:
