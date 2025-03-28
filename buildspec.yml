@@ -14,6 +14,7 @@ phases:
     commands:
       - echo "Compilando e publicando o aplicativo .NET..."
       - dotnet restore 
+      - WORKDIR /app
       - dotnet publish -c Release -o out 
       - echo Build started on `date`
       - echo Construindo a imagem Docker...
