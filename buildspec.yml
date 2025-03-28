@@ -5,7 +5,7 @@ phases:
     commands:
       - aws --version
       - echo "Instalando Docker..."
-      - yum install docker -y
+      - echo "yum install docker -y"
   pre_build:
     commands:
       - echo Entrando na fase de pré-construção...
