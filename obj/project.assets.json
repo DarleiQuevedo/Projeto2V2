@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\win\\.nuget\\packages\\": {}
+    "C:\\Users\\Darlei\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\commit\\avaliacao1\\MeuSite\\MeuSite.csproj",
+      "projectUniqueName": "C:\\Users\\Darlei\\Desktop\\Projeto-AWS-2\\Projeto-AWS-Versao-2\\Projeto2V2\\MeuSite.csproj",
       "projectName": "MeuSite",
-      "projectPath": "C:\\commit\\avaliacao1\\MeuSite\\MeuSite.csproj",
-      "packagesPath": "C:\\Users\\win\\.nuget\\packages\\",
-      "outputPath": "C:\\commit\\avaliacao1\\MeuSite\\obj\\",
+      "projectPath": "C:\\Users\\Darlei\\Desktop\\Projeto-AWS-2\\Projeto-AWS-Versao-2\\Projeto2V2\\MeuSite.csproj",
+      "packagesPath": "C:\\Users\\Darlei\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Darlei\\Desktop\\Projeto-AWS-2\\Projeto-AWS-Versao-2\\Projeto2V2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\win\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Darlei\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -85,7 +85,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407\\RuntimeIdentifierGraph.json"
       }
     }
   }
