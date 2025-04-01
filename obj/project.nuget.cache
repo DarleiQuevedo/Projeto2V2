@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NglFibyYvRI=",
+  "dgSpecHash": "bssRM0Qh/Bc=",
   "success": true,
   "projectFilePath": "C:\\Users\\Darlei\\Desktop\\Projeto-AWS-2\\Projeto-AWS-Versao-2\\Projeto2V2\\MeuSite.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Darlei\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Darlei\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Darlei\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Darlei\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

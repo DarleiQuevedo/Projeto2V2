@@ -3,18 +3,19 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      dotnet: 6.0
+      dotnet: 8.0
   pre_build:
     commands:
       - echo Entrando na fase de pré-construção...
       - aws --version
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 288761730587.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=288761730587.dkr.ecr.us-east-1.amazonaws.com/projeto-2-aws
+      - dotnet --version
   build:
     commands:
       - echo "Compilando e publicando o aplicativo .NET..."
       - dotnet restore 
-      - dotnet publish -c Release -o /app/out 
+      - dotnet publish -c Release -o out 
       - echo Build started on `date`
       - echo Construindo a imagem Docker...
       - docker build -t $REPOSITORY_URI:latest .
