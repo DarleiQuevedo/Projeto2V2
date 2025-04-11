@@ -26,7 +26,7 @@ namespace MEUSITE
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync(" Bem-vindo ao MeuSite VesusInformatica.com.br Aula 10-04-25 19:48");
+                    await context.Response.WriteAsync(" Bem-vindo ao MeuSite VesusInformatica.com.br Aula 10-04-25 22:58");
                 });
             });
         }
